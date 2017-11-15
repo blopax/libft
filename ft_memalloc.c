@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:47 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:56:48 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/15 15:24:40 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/15 15:24:43 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memalloc(size_t size)
 {
-	int			i;
-	char		c_ascii;
-	const char	*dest;
+	void	*allocated_mem;
+	size_t	i;
 
+	if (!(allocated_mem = (void *)malloc(sizeof(void) * size)))
+		return (NULL);
 	i = 0;
-	dest = NULL;
-	if (c < 0)
-		c_ascii = 256 + c % 256;
-	else
-		c_ascii = c % 256;
-	while (s[i] != '\0')
+	while (i < size)
 	{
-		if (s[i] == c_ascii)
-			dest = s + i;
+		((unsigned char *)allocated_mem)[i] = 0;
 		i++;
 	}
-	if (s[i] == c_ascii)
-		dest = s + i;
-	return ((char *)dest);
+	return (allocated_mem);
 }

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:47 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:56:48 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/15 15:33:54 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/15 15:38:56 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int			i;
-	char		c_ascii;
-	const char	*dest;
+	int		i;
+	int		j;
+	char	*fresh_str;
 
+	if (!(fresh_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
 	i = 0;
-	dest = NULL;
-	if (c < 0)
-		c_ascii = 256 + c % 256;
-	else
-		c_ascii = c % 256;
-	while (s[i] != '\0')
+	while (s1[i])
 	{
-		if (s[i] == c_ascii)
-			dest = s + i;
+		fresh_str[i] = s1[i];
 		i++;
 	}
-	if (s[i] == c_ascii)
-		dest = s + i;
-	return ((char *)dest);
+	j = 0;
+	while (s2[j])
+	{
+		fresh_str[i + j] = s2[j];
+		j++;
+	}
+	fresh_str[i + j] = 0;
+	return (fresh_str);
 }

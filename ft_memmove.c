@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:47 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:56:48 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/13 13:47:08 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/13 19:00:37 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int			i;
-	char		c_ascii;
-	const char	*dest;
+	size_t	i;
+	char	*dst_char;
+	char	*src_char;
 
-	i = 0;
-	dest = NULL;
-	if (c < 0)
-		c_ascii = 256 + c % 256;
-	else
-		c_ascii = c % 256;
-	while (s[i] != '\0')
+	dst_char = (char *)dst;
+	src_char = (char *)src;
+	if (src <= dst && dst <= src + len)
 	{
-		if (s[i] == c_ascii)
-			dest = s + i;
-		i++;
+		i = len;
+		while (i > 0)
+		{
+			dst_char[i - 1] = src_char[i - 1];
+			i--;
+		}
 	}
-	if (s[i] == c_ascii)
-		dest = s + i;
-	return ((char *)dest);
+	else
+	{
+		i = 0;
+		while (i < len)
+		{
+			dst_char[i] = src_char[i];
+			i++;
+		}
+	}
+	return (dst);
 }

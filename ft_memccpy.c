@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:47 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:56:48 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/13 14:26:46 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/13 14:38:48 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int			i;
-	char		c_ascii;
-	const char	*dest;
+	size_t	i;
+	char	*dst_char;
+	char	*src_char;
 
 	i = 0;
-	dest = NULL;
-	if (c < 0)
-		c_ascii = 256 + c % 256;
-	else
-		c_ascii = c % 256;
-	while (s[i] != '\0')
+	dst_char = (char *)dst;
+	src_char = (void *)src;
+	while (i < n)
 	{
-		if (s[i] == c_ascii)
-			dest = s + i;
+		dst_char[i] = src_char[i];
+		if (src_char[i] == (char)c)
+			return (dst + i + 1);
 		i++;
 	}
-	if (s[i] == c_ascii)
-		dest = s + i;
-	return ((char *)dest);
+	return (NULL);
 }

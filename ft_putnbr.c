@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:47 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:56:48 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/15 18:58:28 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/15 19:09:44 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putnbr(int n)
 {
-	int			i;
-	char		c_ascii;
-	const char	*dest;
+	long	result;
+	char	c;
 
-	i = 0;
-	dest = NULL;
-	if (c < 0)
-		c_ascii = 256 + c % 256;
-	else
-		c_ascii = c % 256;
-	while (s[i] != '\0')
+	result = (long)(n);
+	if (result < 0)
 	{
-		if (s[i] == c_ascii)
-			dest = s + i;
-		i++;
+		write(1, "-", 1);
+		result = -result;
 	}
-	if (s[i] == c_ascii)
-		dest = s + i;
-	return ((char *)dest);
+	if (result / 10 > 0)
+		ft_putnbr(result / 10);
+	c = result % 10 + 48;
+	write(1, &c, 1);
 }
