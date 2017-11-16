@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 15:26:01 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/16 14:29:52 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/16 17:10:13 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/16 18:55:29 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int	i;
+	t_list	*fresh_lst;
+	t_list	**a_fresh_lst;
+//	t_list	*reverse_list;
+//	t_list	**a_reverse_list;
 
-	if (s && f)
+	a_fresh_lst = &fresh_lst;
+	while (lst)
 	{
-		i = 0;
-		while (s[i] != 0)
-		{
-			(*f)(i, s + i);
-			i++;
-		}
+		ft_lstadd(a_fresh_lst, f(lst));
+		lst = lst->next;
 	}
+
+//	a_reverse_list = &reverse_list;
+
+
+	return (fresh_lst);
 }
+
+//utiliser lstnew

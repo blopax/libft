@@ -6,20 +6,20 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:34:02 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/15 15:45:15 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/16 14:31:44 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_blank(char c)
+static int		ft_is_blank(char c)
 {
 	if (c == ' ' || c == '\n' || c == '\t')
 		return (1);
 	return (0);
 }
 
-int		ft_fresh_str_len(char const *s)
+static int		ft_fresh_str_len(char const *s)
 {
 	int	len;
 	int	start;
@@ -48,13 +48,15 @@ int		ft_fresh_str_len(char const *s)
 	return (len);
 }
 
-char	*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
 	char	*fresh_str;
 	int		fresh_str_len;
 	int		start;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	start = 0;
 	fresh_str_len = ft_fresh_str_len(s);
 	i = 0;

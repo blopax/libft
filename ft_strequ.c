@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:27:01 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/15 15:30:21 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/16 14:22:21 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int		ft_strequ(char const *s1, char const *s2)
 {
-	if (!(ft_strcmp(s1, s2)))
-		return (1);
+	if (s1 && s2)
+	{
+		if (!(ft_strcmp(s1, s2)))
+			return (1);
+	}
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:07:43 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/15 15:22:51 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/16 13:39:04 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		limits_check(unsigned long long result, int sign, int count)
+static int		limits_check(unsigned long long result, int sign, int count)
 {
 	if ((result >= 9223372036854775807 || count > 19) && sign == 1)
 		return (-1);
@@ -22,7 +22,7 @@ int		limits_check(unsigned long long result, int sign, int count)
 		return (1);
 }
 
-int		ft_atoi(const char *str)
+int				ft_atoi(const char *str)
 {
 	int					i;
 	int					start;

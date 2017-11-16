@@ -6,13 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 16:49:02 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/15 18:44:02 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/16 13:39:57 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_string_size(long long n, int signe)
+static int		ft_string_size(long long n, int signe)
 {
 	int				size;
 
@@ -25,7 +25,7 @@ int		ft_string_size(long long n, int signe)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	long long		result;
 	char			*str;
