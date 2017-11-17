@@ -15,21 +15,17 @@
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*fresh_lst;
-	t_list	**a_fresh_lst;
-//	t_list	*reverse_list;
-//	t_list	**a_reverse_list;
+	t_list	*fresh_lst_start;
 
-	a_fresh_lst = &fresh_lst;
+	fresh_lst = ft_lstnew(lst->content, lst->content_size);
+	fresh_lst = f(fresh_lst);
+	fresh_lst_start = fresh_lst;
+	lst = lst->next;
 	while (lst)
 	{
-		ft_lstadd(a_fresh_lst, f(lst));
+		fresh_lst->next = f(ft_lstnew(lst->content, lst->content_size));
+		fresh_lst = fresh_lst->next;
 		lst = lst->next;
 	}
-
-//	a_reverse_list = &reverse_list;
-
-
-	return (fresh_lst);
+	return (fresh_lst_start);
 }
-
-//utiliser lstnew
